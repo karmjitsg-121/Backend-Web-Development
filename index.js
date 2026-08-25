@@ -4,16 +4,6 @@ const path = require("path");
 const INPUT = path.join(__dirname, "sample-data.txt");
 const OUTPUT = path.join(__dirname, "sample-copy.txt");
 
-function readWholeFile() {
-  fs.readFile(INPUT, (error, data) => {
-    if (error) {
-      console.error(`readFile: ${error.message}`);
-      return;
-    }
-
-    console.log(`readFile: loaded ${data.length} bytes into memory at once`);
-  });
-}
 
 function streamFile() {
   const readable = fs.createReadStream(INPUT, { highWaterMark: 64 * 1024 });
